@@ -1,0 +1,70 @@
+.cours {
+  overflow: hidden;
+  padding: 40px 0;
+  white-space: nowrap;
+  display: flex;
+    align-items: center;
+  
+
+}
+
+.cours-slide {
+  display: inline-block;
+  animation: slide 20s linear infinite;
+  vertical-align: top;
+  height: 200px;
+}
+
+/* Style commun aux cartes */
+.cours-card {
+  display: inline-block;
+  width: 300px;
+  height: 220px; /* hauteur un peu plus précise */
+  margin: 0 20px 0 0;
+  padding: 16px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  vertical-align: top;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.cours-card:hover {
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.cours-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.cours-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.cours-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.6em; /* environ 2 lignes */
+  line-height: 1.8em;
+}
+
+/* Animation slide */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

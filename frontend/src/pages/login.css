@@ -1,0 +1,109 @@
+.login-l{
+    background: linear-gradient( #ffffff 40%,transparent  ),
+    repeating-linear-gradient(
+        #2b2b2bab,
+        #2b2b2b54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #2b2b2b56,
+        #000000 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
+.login-d{
+    background: linear-gradient( #000000 40%,transparent  ),
+    repeating-linear-gradient(
+        #ffffffab,
+        #ffffff54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #b8b8b856,
+        #c7c6c6 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
+
+
+.login-lr{
+    background: linear-gradient(to left, #ffffff 10%,transparent  ),
+    repeating-linear-gradient(
+        #2b2b2b65,
+        #2b2b2b54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #2b2b2b56,
+        #2b2b2b5d 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
+.login-dr{
+    background: linear-gradient(to left, #000000 10%,transparent  ),
+    repeating-linear-gradient(
+        #ffffffab,
+        #ffffff54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #b8b8b856,
+        #c7c6c6 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
+
+.reset{
+      font-family: "Audiowide", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+    
+}
+
+
+
+
+.login-lr1{
+    background: linear-gradient(to left top, #ffffff 60%,transparent  ),
+    repeating-linear-gradient(
+        #2b2b2b65,
+        #2b2b2b54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #2b2b2b56,
+        #2b2b2b5d 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
+.login-dr1{
+    background: linear-gradient(to left top, #000000 60%,transparent ),
+    repeating-linear-gradient(
+        #ffffffab,
+        #ffffff54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #b8b8b856,
+        #c7c6c6 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
