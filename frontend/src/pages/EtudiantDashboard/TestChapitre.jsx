@@ -47,7 +47,7 @@ const { theme } = useThemeStore();
   };
 
   return (
-    <div className="p-6 rounded-lg relative">
+    <div className=" p-2 sm:p-6 rounded-lg relative">
       {showFireworks && (
         <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center">
           <ConfettiExplosion force={0.9} duration={5000} particleCount={250} width={1600} />
@@ -55,7 +55,7 @@ const { theme } = useThemeStore();
       )}
 
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-4xl audiowide-regular-b">Test du Chapitre</h2>
+        <h2 className="text-xl sm:text-4xl audiowide-regular-b">Test du Chapitre</h2>
         <div className="flex flex-col gap-1 justify-center items-center">
           <Timer size={30} />
           10min
@@ -67,10 +67,10 @@ const { theme } = useThemeStore();
                      <div className={`absolute bottom-1/4 right-1/2  w-60 h-30 ${theme=="dark"? 'bg-purple-600/30':'bg-purple-600/20'}   rounded-full blur-3xl `}></div>
 
         {questions.map((q, index) => (
-          <div key={q.id} className="border-1 border-gray-400 bg-base-300 p-4 mb-4 rounded-2xl">
+          <div key={q.id} className="border-1 border-gray-400 bg-base-300 p-1 sm:p-4 mb-4 rounded-2xl">
             <p className="font-semibold mb-2 text-gray-400">Question N° {index + 1}</p>
             <p className="text-gray-400 mb-1">{q.texte_question}</p>
-            <div className="rounded-2xl border-1 border-gray-400 p-4">
+            <div className="rounded-2xl border-1 border-gray-400 p-1 sm:p-4">
               {q.options.map((opt) => (
                 <label key={opt.label} className="block mb-1">
                   <input
@@ -81,7 +81,7 @@ const { theme } = useThemeStore();
                     onChange={() => handleChange(q.id, opt.label)}
                     className="mr-2 checkbox checkbox-sm"
                   />
-                  {opt.label}. {opt.value}
+                   {opt.value}
                 </label>
               ))}
             </div>
@@ -108,10 +108,10 @@ const { theme } = useThemeStore();
               <div key={rep.question_id} className="rounded p-2">
                 <p className="font-bold mb-1">Question N°{index + 1}</p>
                 <p className="text-sm text-gray-400">
-                  Ta réponse : <span className="font-semibold text-red-300">{rep.reponse_donnee}</span>
+                  Ta réponse : <span className="font-semibold text-red-300">{rep.reponse_texte}</span>
                 </p>
                 <p className="text-sm text-gray-400">
-                  Bonne réponse : <span className="font-semibold text-green-300">{rep.bonne_reponse}</span>
+                  Bonne réponse : <span className="font-semibold text-green-300">{rep.bonne_reponse_texte}</span>
                 </p>
               </div>
             ))}

@@ -1,4 +1,4 @@
-// 📁 store/useExamenStore.js
+//  store/useExamenStore.js
 import { create } from 'zustand';
 import { axiosInstance } from '../utils/axios';
 import { toast } from 'react-hot-toast';
@@ -7,7 +7,7 @@ const useExamenStore = create((set, get) => ({
   examens: [],
   isLoading: false,
 
-  // 🔄 Récupérer les examens (enseignant)
+  //  Récupérer les examens (enseignant)
   fetchExamens: async () => {
     try {
       set({ isLoading: true });
@@ -21,7 +21,7 @@ const useExamenStore = create((set, get) => ({
     }
   },
 
-  // 👨‍🎓 Récupérer les examens d'un étudiant
+  //  Récupérer les examens d'un étudiant
   fetchExamensEtudiant: async (etudiantId) => {
     try {
       set({ isLoading: true });
@@ -50,7 +50,7 @@ const useExamenStore = create((set, get) => ({
     }
   },
 
-  // 🔄 Modifier une note
+  //  Modifier une note
   modifierExamen: async (id, note) => {
     try {
       set({ isLoading: true });
@@ -65,7 +65,7 @@ const useExamenStore = create((set, get) => ({
     }
   },
 
-  // ❌ Supprimer une note
+  // Supprimer une note
   supprimerExamen: async (id) => {
     try {
       set({ isLoading: true });

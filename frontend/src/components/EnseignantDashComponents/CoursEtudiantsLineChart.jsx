@@ -23,7 +23,7 @@ const CoursEtudiantsLineChart = ({ cours }) => {
   const data = prepareDataByDate(cours);
 
   return (
-    <div className="mt-5 p-4 bg-base-100 rounded-xl shadow">
+    <div className="mt-5 p-1 sm:p-4 bg-base-100 rounded-xl shadow">
       <h3 className="text-lg font-semibold mb-4 text-gray-400">Evolution des Inscriptions</h3>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>

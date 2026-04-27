@@ -40,7 +40,7 @@ exports.login = async (req, res) => {
     const isMatch = await bcrypt.compare(mot_de_passe, user.mot_de_passe);
     if (!isMatch) return res.status(401).json({ message: 'Mot de passe incorrect' });
 
-    const token = jwt.sign({ id: user.id, role }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign({ id: user.id, email: user.email, role }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
     // 🔐 on retire le mot de passe avant de renvoyer
     delete user.mot_de_passe;
@@ -159,8 +159,20 @@ exports.checkAuth = async (req, res) => {
 exports.registerEtudiant = async (req, res) => {
   const { nom, email, adress, mot_de_passe, date_naissance } = req.body;
 
-  if (!nom || !email || !adress || !mot_de_passe || !date_naissance) {
+  if (!nom || !email || !mot_de_passe ) {
     return res.status(400).json({ message: 'Tous les champs sont requis' });
+  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Format email invalide' });
+  }
+
+  if (!passwordRegex.test(mot_de_passe)) {
+    return res.status(400).json({
+      message: 'Mot de passe invalide : au moins 8 caractères avec lettres et chiffres',
+    });
   }
 
   try {

@@ -1,6 +1,6 @@
 const pool = require('../config/db');
 
-// ✅ Tous les cours créés par l'enseignant connecté
+//  Tous les cours créés par l'enseignant connecté
 exports.getMesCours = async (req, res) => {
   const enseignant_id = req.user.id;
 

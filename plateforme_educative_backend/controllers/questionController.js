@@ -1,7 +1,7 @@
-// 📁 controllers/questionController.js
+// controllers/questionController.js
 const pool = require('../config/db');
 
-// ✅ Créer une question (enseignant)
+//  Créer une question (enseignant)
 exports.ajouterQuestion = async (req, res) => {
   const { chapitre_id, texte_question, option_a, option_b, option_c, option_d, bonne_reponse } = req.body;
   try {
@@ -27,7 +27,7 @@ exports.ajouterQuestion = async (req, res) => {
   }
 };
 
-// ✅ Récupérer toutes les questions d’un chapitre (enseignant)
+// Récupérer toutes les questions d’un chapitre (enseignant)
 exports.getQuestionsByChapitre = async (req, res) => {
   const chapitre_id = req.params.chapitre_id;
   try {
@@ -41,7 +41,7 @@ exports.getQuestionsByChapitre = async (req, res) => {
   }
 };
 
-// ✅ Mettre à jour une question (enseignant)
+//  Mettre à jour une question (enseignant)
 exports.updateQuestion = async (req, res) => {
   const question_id = req.params.id;
   const { texte_question, option_a, option_b, option_c, option_d, bonne_reponse } = req.body;
@@ -56,7 +56,7 @@ exports.updateQuestion = async (req, res) => {
   }
 };
 
-// ✅ Supprimer une question (enseignant)
+//  Supprimer une question (enseignant)
 exports.deleteQuestion = async (req, res) => {
   const question_id = req.params.id;
   try {

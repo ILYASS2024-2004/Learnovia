@@ -7,6 +7,7 @@ import MiniQuizPython from '../components/MiniQuizPython';
 import MiniQuizJS from '../components/MiniQuizJs';
 import  useAuthStore  from '../store/useAuthStore';
 import Navbar from '../components/Navbar';
+import Home from '../components/Home';
 const PrincipalPage = () => { 
    const { theme } = useThemeStore();
   const { user, isAuthenticated } = useAuthStore();
@@ -190,7 +191,7 @@ const PrincipalPage = () => {
     <div class="div121 bg-yellow-100"> <MiniQuizPython></MiniQuizPython></div>
 </div>
 
-<div className="container2">
+<div className={`container2 ${theme === 'light' ? 'login-lr1' :  'login-dr1'}`}>
   <div className={`absolute w-full h-[60px] ${theme=="light"?"bg-white":"bg-black"} tra `}></div>
   <div className="content2">
     <div className="hero_text text-md sm:text-3xl">Sur LearNovia,</div>
@@ -216,7 +217,7 @@ const PrincipalPage = () => {
     />
     <img
       className="img3 border-primary border-6 "
-      src="https://store.iipbooks.com/wp-content/uploads/2023/11/front-cover-page-scaled.jpg"
+      src="py1.jpg"
       alt=""
     />
     <img
@@ -231,6 +232,10 @@ const PrincipalPage = () => {
     />
   </div>
 </div>
+
+
+<Home></Home>
+
 
 <br /><br />
 

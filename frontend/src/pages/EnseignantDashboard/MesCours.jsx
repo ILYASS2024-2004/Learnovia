@@ -37,15 +37,15 @@ const MesCours = () => {
   const paginatedCours = cours.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
   return (
-    <div className="p-6 ">
+    <div className="p-2 sm:p-6">
       <div className="mb-6">
         {/* <h1 className="text-xl sm:text-4xl audiowide-regular-b mb-2 ">Mes Cours</h1> */}
-        <h1 className="text-4xl audiowide-regular-b mb-2 ">Mes Cours</h1>
+        <h1 className="text-xl sm:text-4xl audiowide-regular-b mb-2 ">Mes Cours</h1>
         <div className='flex justify-between items-center'>
           <p className="text-sm text-gray-400">
             Voici les cours que vous avez créés <span className='text-green-300'>({cours.length} pour le moment)</span>.
           </p>
-          <div className="flex justify-center">
+          <div className="flex flex-col sm:flex-row justify-center">
             <button
               className="btn btn-sm"
               onClick={() => {
@@ -53,7 +53,7 @@ const MesCours = () => {
                 setShowForm(true);
               }}
             >
-              <Plus className="w-4 h-4 mr-2" /> Ajouter un cours
+              <Plus className="w-4 h-4  mr-0 sm:mr-2" /> Ajouter un cours
             </button>
           </div>
         </div>

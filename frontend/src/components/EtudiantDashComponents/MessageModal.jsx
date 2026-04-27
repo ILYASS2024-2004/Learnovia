@@ -64,7 +64,7 @@ const MessageModal = ({ onClose }) => {
                 <option value="">-- Sélectionner un enseignant --</option>
                 {enseignants.map((e) => (
                   <option key={e.id} value={e.id}>
-                    {e.nom} ({e.email})
+                    {e.nom} 
                   </option>
                 ))}
               </select>
@@ -84,17 +84,17 @@ const MessageModal = ({ onClose }) => {
               />
             </div>
 
-            <div className="flex justify-between gap-4">
+            <div className="flex justify-between gap-2 sm:gap-4">
               <button
                 onClick={onClose}
-                className="btn btn-error text-white flex items-center gap-2"
+                className="btn btn-sm sm:btn-md btn-error text-white flex items-center gap-2"
               >
                 <X size={18} /> Annuler l'action
               </button>
               <button
                 onClick={handleSend}
                 disabled={isSending}
-                className="btn btn-primary flex items-center gap-2"
+                className="btn btn-sm sm:btn-md btn-primary flex items-center gap-2"
               >
                 {isSending ? (
                   <>

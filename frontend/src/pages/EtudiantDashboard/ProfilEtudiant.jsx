@@ -23,7 +23,7 @@ const ProfilEtudiant = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-2  sm:px-6 py-6 sm:py-12">
         
         {/* Header élégant */}
         <div className="mb-16">
@@ -31,7 +31,7 @@ const ProfilEtudiant = () => {
             <div className="p-3 bg-card border border-border rounded-xl shadow-sm">
               <GraduationCap className="w-7 h-7 text-foreground" />
             </div>
-            <h1 className="text-4xl font-light text-foreground tracking-wide">
+            <h1 className="text-xl sm:text-4xl font-light text-foreground tracking-wide">
               Profil Étudiant
             </h1>
           </div>
@@ -160,7 +160,7 @@ const ProfilEtudiant = () => {
               </h3>
             </div>
             
-            <div className="bg-card border border-border rounded-lg p-6">
+            <div className="bg-card border border-border rounded-lg p-1 sm:p-6">
               <div className="rounded-lg overflow-hidden border border-border">
                 <iframe
                   title="Carte Google Maps"

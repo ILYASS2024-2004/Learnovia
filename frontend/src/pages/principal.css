@@ -153,7 +153,72 @@
     );
 }
 
+.login-lr1{
+    background: linear-gradient(to right top, #ffffff 60%,transparent  ),
+    repeating-linear-gradient(
+        #2b2b2b65,
+        #2b2b2b54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #2b2b2b56,
+        #2b2b2b5d 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
+.login-dr1{
+    background: linear-gradient(to right top, #000000 60%,transparent  ),
+    repeating-linear-gradient(
+        #ffffffab,
+        #ffffff54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #b8b8b856,
+        #c7c6c6 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
 
+
+.login-lr11{
+    background: linear-gradient(to left bottom, #ffffff 50%,transparent ,#ffff ),
+    repeating-linear-gradient(
+        #2b2b2b65,
+        #2b2b2b54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #2b2b2b56,
+        #2b2b2b5d 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
+.login-dr11{
+    background: linear-gradient(to left bottom, #000000 30%,#000000,transparent  ),
+    repeating-linear-gradient(
+        #ffffffab,
+        #ffffff54 1px,
+        transparent 1px,
+       transparent 35px
+    ),
+    repeating-linear-gradient(
+        to right,
+        #b8b8b856,
+        #c7c6c6 1px,
+        transparent 1px,
+       transparent 35px
+    );
+}
 
 
 
@@ -400,6 +465,7 @@
         justify-content: center;
         align-items: center;
         gap: 0px;
+        
     }
    .imgc img {
        
@@ -411,6 +477,9 @@
        
         
     }
+ 
+  
+
     .imgc img:hover {
        scale: 1.1;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);

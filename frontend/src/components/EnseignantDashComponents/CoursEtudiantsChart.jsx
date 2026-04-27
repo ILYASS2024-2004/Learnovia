@@ -3,7 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGri
 
 const CoursEtudiantsChart = ({ data }) => {
   return (
-    <div className="mt-5 bg-base-100 p-6 rounded-lg shadow ">
+    <div className="mt-5 bg-base-100 p-1 sm:p-4 rounded-lg shadow ">
       <h3 className="text-lg font-semibold mb-4 text-gray-400">Étudiants par cours</h3>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>

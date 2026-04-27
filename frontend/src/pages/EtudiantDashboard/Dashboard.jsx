@@ -24,7 +24,7 @@ const Dashboard = () => {
   }));
 
   return (
-    <div className="p-6">
+    <div className="p-2 sm:p-6">
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-6 min-h-[200px] ">
         <div className='col-span-1 sm:col-span-3 bg-base-300 p-2 border-1 border-gray-400 rounded-2xl'>
              <h2 className="text-xl font-light text-foreground tracking-wide ">Bienvenue sur votre tableau de bord</h2>

@@ -7,7 +7,11 @@ exports.createCheckoutSession = async (req, res) => {
   const { cours_id } = req.body;
   const etudiant_id = req.user.id;
 
+
   try {
+   
+
+
     const [[cours]] = await pool.execute(
       'SELECT * FROM cours WHERE id = ?',
       [cours_id]
@@ -16,6 +20,8 @@ exports.createCheckoutSession = async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
+      customer_email: req.user.email,
+      
       line_items: [
         {
           price_data: {
@@ -46,6 +52,7 @@ exports.createCheckoutSession = async (req, res) => {
 exports.confirmerPaiementEtInscription = async (req, res) => {
   const { cours_id } = req.body;
   const etudiant_id = req.user.id;
+
 
   try {
     const [existing] = await pool.execute(

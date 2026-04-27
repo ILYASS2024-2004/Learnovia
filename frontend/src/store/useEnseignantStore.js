@@ -9,8 +9,9 @@ const useEnseignantStore = create((set, get) => ({
   questions: [],
   etudiantsInscrits: [],
   tousEtudiants: [],
+  videos: [], 
 
-  // 🔄 Tous les cours
+  //  Tous les cours
   fetchMesCours: async () => {
     try {
       set({ isLoading: true });
@@ -39,7 +40,7 @@ const useEnseignantStore = create((set, get) => ({
     }
   },
 
-  // ✏️ Modifier un cours
+  // Modifier un cours
   updateCours: async (id, data) => {
     try {
       set({ isLoading: true });
@@ -54,7 +55,7 @@ const useEnseignantStore = create((set, get) => ({
     }
   },
 
-  // ❌ Supprimer un cours
+  // Supprimer un cours
   deleteCours: async (id) => {
     try {
       set({ isLoading: true });
@@ -205,7 +206,65 @@ const useEnseignantStore = create((set, get) => ({
   } finally {
     set({ isLoading: false });
   }
-}
+},
+fetchVideosByChapitre: async (chapitreId) => {
+    set({ isLoadingVideos: true });
+    try {
+      const res = await axiosInstance.get(`/chapitres/${chapitreId}/videos`);
+      set({ videos: res.data });
+      return res.data;
+    } catch (err) {
+      toast.error("Erreur chargement vidéos");
+      console.error(err);
+      return [];
+    } finally {
+      set({ isLoadingVideos: false });
+    }
+  },
+
+uploadVideo: async (chapitreId, formData) => {
+  set({ isLoadingVideos: true });
+  try {
+    const res = await axiosInstance.post(`/chapitres/${chapitreId}/videos`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    });
+    toast.success("Vidéo ajoutée !");
+
+    // Ajoute la nouvelle vidéo dans le state
+    set((state) => ({
+      videos: [...state.videos, res.data.video]
+    }));
+  } catch (err) {
+    toast.error("Erreur upload vidéo");
+    console.error(err);
+  } finally {
+    set({ isLoadingVideos: false });
+  }
+},
+
+deleteVideo: async (videoId, chapitreId) => {
+  set({ isLoadingVideos: true });
+  try {
+    await axiosInstance.delete(`/videos/${videoId}`);
+    toast.success("Vidéo supprimée !");
+
+    // Vérifie que videos existe
+    set((state) => ({
+      videos: state.videos ? state.videos.filter(v => v.id !== videoId) : []
+    }));
+
+    // Optionnel : recharger les vidéos du chapitre
+    if (chapitreId) {
+      await get().fetchVideosByChapitre(chapitreId);
+    }
+  } catch (err) {
+    toast.error("Erreur suppression vidéo");
+    console.error(err);
+  } finally {
+    set({ isLoadingVideos: false });
+  }
+},
+
 }));
 
 export default useEnseignantStore;

@@ -40,23 +40,24 @@ const Etudiants = () => {
   const startIdx = (page - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
   const paginatedEtudiants = filteredEtudiants.slice(startIdx, endIdx);
+  console.log(paginatedEtudiants)
   const totalPages = Math.ceil(filteredEtudiants.length / itemsPerPage);
 
   return (
-    <div className='p-6'>
+    <div className='p-3 sm:p-6'>
       <div>
-        <p className='text-4xl audiowide-regular-b '>Gestion d'étudiants</p>
+        <p className='text-xl sm:text-4xl audiowide-regular-b '>Gestion d'étudiants</p>
         <p className='text-sm text-gray-400'>
         Cette section permet d'ajouter, de consulter, de modifier et de supprimer les informations des étudiants. Vous avez actuellement <span className='text-green-300'>{stats.total_etudiants} étudiants</span>
           </p>
       </div>
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-semibold mt-2">Liste des Étudiants</h2>
+        <h2 className="text-lg sm:text-2xl font-semibold mt-2">Liste des Étudiants</h2>
         <button className="btn  " onClick={() => {
           setSelectedEtudiant(null);
           setShowForm(true);
         }}>
-          <Plus className="w-4 h-4 mr-1" /> Ajouter
+          <Plus className="w-2 sm:w-4 h-2 sm:h-4 mr-1" /> Ajouter
         </button>
       </div>
 

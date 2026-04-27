@@ -21,8 +21,8 @@ export default function Sidebar() {
       { icon: <Users size={20} />, text: "Étudiants", path: "" },
     { icon: <BookOpen size={20} />, text: "Cours", path: "mes-cours" },
     
-    { icon: <ListChecks size={20} />, text: "Exams", path: "questions" },
-    { icon: <FileText size={20} />, text: "Notes", path: "exams" },
+    { icon: <ListChecks size={20} />, text: "Tests", path: "questions" },
+   
    
    
   ];

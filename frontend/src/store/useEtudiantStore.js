@@ -12,6 +12,7 @@ const useEtudiantStore = create((set) => ({
   notifications: [],
   examens: [],
 enseignants: [],
+  videos: [], 
   isLoading: false,
 
 fetchEnseignants: async () => {
@@ -26,7 +27,7 @@ fetchEnseignants: async () => {
   }
 },
 
-  /// ✅ Cours achetés par l'étudiant
+  /// Cours achetés par l'étudiant
 fetchMesCours: async () => {
   try {
     set({ isLoading: true });
@@ -41,11 +42,11 @@ fetchMesCours: async () => {
 },
 
 
-  // ✅ Tous les cours disponibles (non achetés)
+  // Tous les cours disponibles (non achetés)
 fetchCoursDisponibles: async () => {
   try {
     set({ isLoading: true });
-    const res = await axiosInstance.get('/cours/disponibles'); // ✅ correct
+    const res = await axiosInstance.get('/cours/disponibles'); // correct
     set({ coursDisponibles: res.data });
   } catch (err) {
     toast.error("Erreur chargement cours disponibles");
@@ -67,7 +68,7 @@ fetchCoursDisponibles: async () => {
     }
   },
 
-  // ✅ Voir progression des chapitres d’un cours
+  // Voir progression des chapitres d’un cours
   fetchChapitresAvecStatut: async (cours_id) => {
     try {
       const res = await axiosInstance.get(`/progression/cours/${cours_id}/chapitres`);
@@ -100,7 +101,7 @@ fetchCoursDisponibles: async () => {
     }
   },
 
-  // ✅ Envoyer un message à un professeur
+  //  Envoyer un message à un professeur
   envoyerMessage: async (enseignant_id, texte) => {
     try {
       await axiosInstance.post('/messages', { enseignant_id, texte });
@@ -122,7 +123,7 @@ fetchCoursDisponibles: async () => {
     }
   },
 
-  // ✅ Soumettre réponses d'un chapitre
+  //  Soumettre réponses d'un chapitre
   soumettreTestChapitre: async (chapitre_id, reponses) => {
     try {
       const res = await axiosInstance.post(`/reponses/chapitre/${chapitre_id}`, reponses);
@@ -133,7 +134,7 @@ fetchCoursDisponibles: async () => {
     }
   },
 
-  // ✅ Acheter un cours via Stripe
+  //  Acheter un cours via Stripe
   acheterCours: async (cours_id) => {
     try {
       const res = await axiosInstance.post('/stripe/create-checkout-session', { cours_id });
@@ -144,7 +145,7 @@ fetchCoursDisponibles: async () => {
     }
   },
 
-  // ✅ Récupérer un chapitre avec ou sans contenu (selon inscription)
+  //  Récupérer un chapitre avec ou sans contenu (selon inscription)
 fetchChapitreParId: async (chapitre_id) => {
   try {
     const res = await axiosInstance.get(`/chapitres/${chapitre_id}`);
@@ -156,7 +157,7 @@ fetchChapitreParId: async (chapitre_id) => {
 },
 
 
-  // ✅ Confirmer inscription après paiement Stripe
+  //  Confirmer inscription après paiement Stripe
 confirmerPaiement: async (cours_id) => {
   try {
     await axiosInstance.post('/stripe/confirmer-paiement', { cours_id: Number(cours_id) });
@@ -170,13 +171,28 @@ confirmerPaiement: async (cours_id) => {
 fetchQuestionsChapitre: async (chapitre_id) => {
   try {
     const res = await axiosInstance.get(`/questions/${chapitre_id}`);
-    return res.data; // ✅ important
+    return res.data; //  important
   } catch (err) {
     toast.error("Erreur chargement questions");
     console.error(err);
     return [];
   }
 },
+
+fetchVideosByChapitre: async (chapitreId) => {
+    set({ isLoadingVideos: true });
+    try {
+      const res = await axiosInstance.get(`/chapitres/${chapitreId}/videos`);
+      set({ videos: res.data });
+      return res.data;
+    } catch (err) {
+      toast.error("Erreur chargement vidéos");
+      console.error(err);
+      return [];
+    } finally {
+      set({ isLoadingVideos: false });
+    }
+  },
 
 
 

@@ -28,7 +28,7 @@ const ForgotPasswordModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed h-screen inset-0 flex justify-center items-center z-9999990 forgot-password-modal">
-      <div className="bg-base-100 p-6 rounded-xl w-full max-w-md">
+      <div className="bg-base-100 p-1 sm:p-6 rounded-xl w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4 text-center mdp-f  ">Mot de passe oublié</h2>
 
         <input
@@ -50,8 +50,8 @@ const ForgotPasswordModal = ({ isOpen, onClose }) => {
         </select>
 
         <div className="flex justify-between items-center">
-          <button className="btn btn-error text-white" onClick={onClose}>Annuler, Je me souviens <SmilePlus size={18}/> </button>
-          <button className="btn btn-primary "  disabled={loading} onClick={handleForgot}>
+          <button className="btn btn-sm sm:btn-md btn-error text-white " onClick={onClose}>Annuler, Je me souviens <SmilePlus size={18}/> </button>
+          <button className="btn btn-sm sm:btn-md btn-primary "  disabled={loading} onClick={handleForgot}>
   {loading ? (
     <Loader className="animate-spin" />
   ) : (

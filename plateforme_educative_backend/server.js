@@ -16,8 +16,10 @@ const adminRoutes = require('./routes/adminRoutes');
 const progressionRoutes = require('./routes/progressionRoutes');
 const stripeRoutes = require('./routes/stripeRoutes');
 const enseignantRoutes = require('./routes/enseignantRoutes');
-const examensRoutes = require('./routes/examensRoutes');
+// const examensRoutes = require('./routes/examensRoutes');
 const etudiantRoutes = require('./routes/etudiantRoutes');
+const videoRoutes = require('./routes/videoRoutes');
+
 
 // ✅ autoriser les requêtes cross-origin
 app.use(cors({
@@ -40,8 +42,10 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/progression', progressionRoutes);
 app.use('/api/stripe', stripeRoutes);
-app.use('/api/examens', examensRoutes);
+// app.use('/api/examens', examensRoutes);
 app.use('/api/etudiants', etudiantRoutes);
+app.use('/api', videoRoutes);
+
 console.log('EMAIL_USER:', process.env.EMAIL_USER);
 console.log('EMAIL_PASSWORD:', process.env.EMAIL_PASSWORD);
 

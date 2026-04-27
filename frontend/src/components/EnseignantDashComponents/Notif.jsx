@@ -32,11 +32,11 @@ const Notif = ({ onClose }) => {
 
   return (
     <div className={`fixed inset-0 ${theme=="light"?" bg-black/20":"bg-white/20"} bg-black/20 bg-opacity-40 z-50 flex items-center justify-center`}>
-      <div className="bg-base-100 p-6 rounded-xl shadow-lg w-full max-w-md">
+      <div className="bg-base-100 p-2 sm:p-6 rounded-xl shadow-lg w-full max-w-md">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
             <div></div>
-          <h2 className="text-2xl audiowide-regular-b ">
+          <h2 className="text-xl sm:text-2xl audiowide-regular-b ">
            
             Envoyer une notification
           </h2>

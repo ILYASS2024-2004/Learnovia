@@ -16,8 +16,8 @@ const Profil = () => {
   if (!user) return <p className="text-center text-gray-500">Chargement du profil...</p>;
 
   return (
-    <div className="max-w-4xl mx-auto rounded-xl p-6 space-y-6">
-      <h2 className="text-4xl audiowide-regular-b mb-4 flex items-center gap-2">
+    <div className="max-w-4xl mx-auto rounded-xl p-2 sm:p-6 space-y-6">
+      <h2 className="text-xl sm:text-4xl audiowide-regular-b mb-4 flex items-center gap-2">
        
          <span>Profil Enseignant</span>
   <GraduationCap className="w-6 h-6" />

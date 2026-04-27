@@ -34,7 +34,7 @@ const CoursForm = ({ cours, onClose, onSubmit }) => {
 
   return (
     <div className={`fixed inset-0 ${theme=="light"?" bg-black/20":"bg-white/20"} bg-black/20 bg-opacity-40 z-50 flex items-center justify-center`}>
-      <div className="bg-base-100 rounded-lg p-6 w-full max-w-lg shadow-lg relative">
+      <div className="bg-base-100 rounded-lg p-2 sm:p-6 w-full max-w-lg shadow-lg relative">
         <button
           onClick={onClose}
           className="absolute top-2 right-2 btn btn-sm btn-circle btn-ghost"
@@ -42,7 +42,7 @@ const CoursForm = ({ cours, onClose, onSubmit }) => {
           ✕
         </button>
 
-        <h2 className="text-3xl audiowide-regular-b text-center mb-4">
+        <h2 className="text-xl sm:text-3xl audiowide-regular-b text-center mb-4">
           {cours ? 'Modifier le cours' : 'Ajouter un nouveau cours'}
         </h2>
 

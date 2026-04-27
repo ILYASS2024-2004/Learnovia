@@ -33,16 +33,16 @@ const Enseignants = () => {
   const totalPages = Math.ceil(filteredEnseignants.length / itemsPerPage);
 
   return (
-    <div className='p-6'>
+    <div className='p-3 sm:p-6'>
       <div>
-        <p className='text-4xl audiowide-regular-b'>Gestion des Enseignants</p>
+        <p className='text-lg sm:text-4xl audiowide-regular-b'>Gestion des Enseignants</p>
         <p className='text-sm text-gray-400'>
           Cette section permet de gérer les enseignants. Total : <span className='text-green-300'>{stats.total_enseignants}</span>
         </p>
       </div>
 
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-semibold mt-2">Liste des Enseignants</h2>
+        <h2 className="text-sm sm:text-2xl font-semibold mt-2">Liste des Enseignants</h2>
         <button className="btn" onClick={() => {
           setSelectedEnseignant(null);
           setShowForm(true);

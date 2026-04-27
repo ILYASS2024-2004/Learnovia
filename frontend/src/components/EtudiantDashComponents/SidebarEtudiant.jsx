@@ -36,7 +36,7 @@ export default function SidebarEtudiant() {
     { icon: <User size={20} />, text: "Profil", path: "profil" },
     { icon: <BookOpen size={20} />, text: "Mescours", path: "mes-cours" },
     // { icon: <Book size={20} />, text: "Cours", path: "cours-disponibles" },
-    { icon: <BarChart2 size={20} />, text: "Resultats", path: "examens" },
+
    
   ];
 

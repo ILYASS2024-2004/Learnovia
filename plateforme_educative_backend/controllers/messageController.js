@@ -14,11 +14,11 @@ exports.envoyerMessage = async (req, res) => {
     );
     if (!enseignant) return res.status(404).json({ message: 'Enseignant non trouvé' });
 
-    // Sauvegarder le message dans la base
-    await pool.execute(
-      `INSERT INTO messages (etudiant_id, enseignant_id, texte) VALUES (?, ?, ?)`,
-      [etudiant_id, enseignant_id, texte]
-    );
+    // // Sauvegarder le message dans la base
+    // await pool.execute(
+    //   `INSERT INTO messages (etudiant_id, enseignant_id, texte) VALUES (?, ?, ?)`,
+    //   [etudiant_id, enseignant_id, texte]
+    // );
 
     // Récupérer email de l’étudiant
     const [[etudiant]] = await pool.execute(

@@ -84,7 +84,7 @@ const {theme}=useThemeStore();
         type="email"
         name="email"
         className="block w-full bg-transparent border-0 focus:outline-none focus:ring-0 py-2"
-        placeholder=" "
+          placeholder="exemple@gmail.com"
         value={formData.email}
         onChange={handleChange}
       />
@@ -104,7 +104,7 @@ const {theme}=useThemeStore();
         type="password"
         name="mot_de_passe"
         className="block w-full bg-transparent border-0 focus:outline-none focus:ring-0 py-2"
-        placeholder=" "
+        placeholder="******"
         value={formData.mot_de_passe}
         onChange={handleChange}
       />

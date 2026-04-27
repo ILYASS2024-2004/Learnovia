@@ -37,21 +37,21 @@ const Admins = () => {
   const totalPages = Math.ceil(filteredAdmins.length / itemsPerPage);
 
   return (
-    <div className="p-6">
+    <div className="p-3 sm:p-6">
       <div>
-        <p className="text-4xl audiowide-regular-b">Gestion des administrateurs</p>
+        <p className="text-sm sm:text-4xl audiowide-regular-b">Gestion des administrateurs</p>
         <p className="text-sm text-gray-400">
           Cette section permet d'ajouter, de consulter, de modifier et de supprimer les administrateurs. Vous avez actuellement <span className="text-green-300">{stats.total_admins} admins</span>.
         </p>
       </div>
 
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-semibold mt-2">Liste des Administrateurs</h2>
+        <h2 className="text-sm sm:text-2xl font-semibold mt-2">Liste des Administrateurs</h2>
         <button className="btn" onClick={() => {
           setSelectedAdmin(null);
           setShowForm(true);
         }}>
-          <Plus className="w-4 h-4 mr-1" /> Ajouter
+          <Plus className="w-2 sm:w-4 h-2 sm:h-4 sm:mr-1" /> Ajouter
         </button>
       </div>
 

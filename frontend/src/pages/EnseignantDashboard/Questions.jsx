@@ -109,8 +109,8 @@ const Questions = () => {
   );
 
   return (
-    <div className="p-6 space-y-6 max-w-5xl mx-auto">
-      <h1 className="text-4xl audiowide-regular-b mb-6">Gestion des Questions</h1>
+    <div className="p-2 sm:p-6 space-y-6 max-w-5xl mx-auto">
+      <h1 className="text-xl sm:text-4xl audiowide-regular-b mb-6">Gestion des Questions</h1>
 
       {/* Filtres */}
       <div className="grid md:grid-cols-3 gap-4">
@@ -275,12 +275,12 @@ const Questions = () => {
           </select>
 
           <div className="flex justify-between">
-            <button className="btn btn-primary" onClick={handleAddOrUpdate}>
+            <button className="btn btn-xs sm:btn-md btn-primary" onClick={handleAddOrUpdate}>
              
               {editingQuestionId ? <>Mettre à jour la question sélectionnée <Bolt className="w-4 h-4 ml-1" /> </>: <><Plus className="w-4 h-4 mr-1" />Ajouter la question au chapitre sélectionné</> }
             </button>
             {editingQuestionId && (
-              <button className="btn btn-secondary" onClick={resetForm}>Annuler la modification de la question <X className="w-4 h-4 ml-1"></X></button>
+              <button className="btn btn-xs sm:btn-md btn-secondary" onClick={resetForm}>Annuler la modification de la question <X className="w-4 h-4 ml-1"></X></button>
             )}
           </div>
         </div>

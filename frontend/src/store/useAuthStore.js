@@ -104,9 +104,22 @@ const useAuthStore = create((set) => ({
       throw err;
     }
   },
-  register: async (formData) => {
-  const res = await axiosInstance.post('/auth/register', formData);
-  return res.data;
+
+
+register: async (formData) => {
+  try {
+    const res = await axiosInstance.post("/auth/register", formData);
+    toast.success(res.data.message); // message de succès
+    return res.data;
+  } catch (err) {
+    // si le contrôleur renvoie une erreur
+    if (err.response && err.response.data && err.response.data.message) {
+      toast.error(err.response.data.message);
+    } else {
+      toast.error("Erreur inconnue, réessayez plus tard");
+    }
+    throw err;
+  }
 },
 
 }));

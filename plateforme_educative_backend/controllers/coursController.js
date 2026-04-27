@@ -1,4 +1,4 @@
-// 📁 controllers/coursController.js
+// controllers/coursController.js
 const pool = require('../config/db');
 
 exports.createCours = async (req, res) => {
@@ -111,7 +111,7 @@ exports.getCoursDisponiblesPourEtudiant = async (req, res) => {
 };
 
 
-// ✅ Étudiant - voir ses cours achetés
+//  Étudiant - voir ses cours achetés
 // exports.getCoursAchetesParEtudiant = async (req, res) => {
 //   const etudiant_id = req.user.id;
 
@@ -148,11 +148,12 @@ exports.getCoursAchetesParEtudiant = async (req, res) => {
 
     // 2. Récupérer les chapitres associés aux cours achetés
     const [chapitres] = await pool.query(`
-      SELECT id, titre, description, img_url,date_de_creation, ordre, cours_id
-      FROM chapitres
-      WHERE cours_id IN (?)
+      SELECT c.id, c.titre, c.description, c.img_url,c.date_de_creation, c.ordre, c.cours_id, IFNULL(ec.status, 'non_commence') AS status
+      FROM chapitres AS c
+      LEFT JOIN etudiant_chapitre ec ON ec.id_chapitre = c.id AND ec.id_etudiant = ?
+      WHERE c.cours_id IN (?)
       ORDER BY ordre ASC
-    `, [coursIds]);
+    `, [etudiant_id,coursIds]);
 
     // 3. Regrouper les chapitres par cours
     const coursAvecChapitres = cours.map(c => ({

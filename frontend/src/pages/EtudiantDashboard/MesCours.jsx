@@ -26,20 +26,21 @@ const {theme}=useThemeStore();
 
   const totalPagesPayes = Math.ceil(coursPayes.length / itemsPerPage);
   const coursPagePayes = coursPayes.slice((currentPagePayes - 1) * itemsPerPage, currentPagePayes * itemsPerPage);
-
+console.log(coursPagePayes)
   const totalPagesDisponibles = Math.ceil(coursDisponibles.length / itemsPerPage);
   const coursPageDisponibles = coursDisponibles.slice((currentPageDisponibles - 1) * itemsPerPage, currentPageDisponibles * itemsPerPage);
 
   useEffect(() => {
     fetchMesCours();
     fetchCoursDisponibles();
-    fetchProgressionGlobale(); // ✅ Ajouté pour charger la progression réelle
+    fetchProgressionGlobale();// ✅ Ajouté pour charger la progression réelle
+
   }, []);
 
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-screen bg-background p-2 sm:p-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl audiowide-regular-b">Mes Cours</h2>
+        <h2 className="text-xl sm:text-4xl audiowide-regular-b">Mes Cours</h2>
         {/* <h2 className="text-5xl font-light text-foreground tracking-wide">Mes Cours</h2> */}
         <p className='text-sm text-gray-400 mb-6'>Vous êtes inscrit à <span className='text-green-300'>{coursPayes.length} cours</span></p>
 
@@ -113,7 +114,7 @@ const {theme}=useThemeStore();
            <div className='relative'>
              <div className={`absolute bottom-0 right-0  w-60 h-30 ${theme=="dark"? 'bg-amber-600/30':'bg-amber-600/20'}   rounded-full blur-3xl `}></div>
         
-           <h2 className="text-4xl audiowide-regular-b">Explorez les cours disponibles</h2>
+           <h2 className="text-xl sm:text-4xl audiowide-regular-b">Explorez les cours disponibles</h2>
 <p className="text-sm text-gray-400 mb-6">
   Il y a actuellement <span className="text-green-300">{coursDisponibles.length}</span> {coursDisponibles.length === 1 ? 'cours disponible' : 'cours disponibles'} que vous pouvez consulter et acheter pour continuer à progresser dans votre parcours éducatif.
 </p>
@@ -165,7 +166,7 @@ const {theme}=useThemeStore();
         {/* Modale chapitres payés */}
         {coursSelectionne && (
           <div  className={`fixed h-screen inset-0 ${theme === "light" ? "bg-black/20" : "bg-white/20"} z-50 flex items-center justify-center`}>
-            <div className=" bg-base-100 p-6 rounded-lg w-full max-w-md relative max-h-[90vh] overflow-y-auto">
+            <div className=" bg-base-100 p-1 sm:p-6 rounded-lg w-full max-w-[330px] sm:max-w-md relative max-h-[80vh] overflow-y-auto">
               <button
                 onClick={() => setCoursSelectionne(null)}
                 className="absolute top-2 right-2 text-gray-400 cursor-pointer"
@@ -178,7 +179,7 @@ const {theme}=useThemeStore();
               ) : (
                 <div className="list  rounded-box ">
                   {coursSelectionne.chapitres.map((ch) => (
-                    <div key={ch.id} className="list-row">
+                    <div key={ch.id} className={`list-row ${ch.status=='termine'? "bg-green-200":" "} mb-2`}>
                        <div>
               <img className="size-15 rounded-box border-2" src={ch.img_url || "https://via.placeholder.com/40"} alt="Chapitre" />
             </div>

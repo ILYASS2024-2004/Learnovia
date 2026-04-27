@@ -2,17 +2,34 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useEnseignantStore from '../../store/useEnseignantStore';
-import { Loader, Trash2, Plus, ArrowLeft, Eye } from 'lucide-react';
+import { Loader, Trash2, Plus, ArrowLeft, Eye, Video } from 'lucide-react';
 import ChapitreForm from '../../components/EnseignantDashComponents/ChapitreForm';
 import ContenuChModal from '../../components/EnseignantDashComponents/ContenuChModal';
+import VideoUploadModal from '../../components/EnseignantDashComponents/VideoUploadModal';
 
 const ChapitresCours = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { fetchChapitres, chapitres, cours, fetchMesCours, deleteChapitre, isLoading } = useEnseignantStore();
+  const {
+    fetchChapitres,
+    chapitres,
+    cours,
+    fetchMesCours,
+    deleteChapitre,
+    isLoading,
+    fetchVideosByChapitre,
+    deleteVideo,
+  } = useEnseignantStore();
+
   const [selectedCours, setSelectedCours] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [SelectedContenu, setSelectedContenu] = useState(null);
+  const [showContenu, setShowContenu] = useState(false);
+
+  // Nouveaux états pour vidéos
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [selectedChapitre, setSelectedChapitre] = useState(null);
+  const [videosChapitre, setVideosChapitre] = useState([]);
 
   useEffect(() => {
     fetchMesCours();
@@ -28,7 +45,13 @@ const ChapitresCours = () => {
     await useEnseignantStore.getState().addChapitre(data);
     setShowForm(false);
   };
-   const [showContenu, setShowContenu] = useState(false);
+
+  const handleOpenVideos = async (chapitre) => {
+    setSelectedChapitre(chapitre);
+    const res = await fetchVideosByChapitre(chapitre.id);
+    setVideosChapitre(res || []);
+    setShowVideoModal(true);
+  };
 
   if (isLoading || !selectedCours) {
     return (
@@ -43,51 +66,56 @@ const ChapitresCours = () => {
       <button className="btn btn-sm mb-4" onClick={() => navigate(-1)}>
         <ArrowLeft className="w-4 h-4 mr-1" /> Retour
       </button>
-      <div className='flex gap-7  mb-6 text-4xl audiowide-regular-b'>
-           <h1 className="  ">Chapitres du cours :</h1>
-      <span className="text-green-300  ">{selectedCours.titre}</span>
+      <div className='flex gap-7 mb-6 text-xl sm:text-4xl audiowide-regular-b'>
+        <h1>Chapitres du cours :</h1>
+        <span className="text-green-300">{selectedCours.titre}</span>
       </div>
-
-   
 
       {chapitres.length === 0 ? (
         <p className="text-gray-500">Aucun chapitre trouvé pour ce cours.</p>
       ) : (
         <div className="list bg-base-100 rounded-box shadow-md">
           {chapitres.map((chapitre) => (
-            <div key={chapitre.id} className=" list-row flex items-center justify-between gap-4 p-3 hover:bg-base-200">
-              <div className='flex gap-8  items-end'>
-             <span className='text-gray-400 text-4xl'>0{chapitre.ordre}</span> 
-              <img className='size-15 rounded-xl ' src={chapitre.img_url} alt="" />
+            <div key={chapitre.id} className="list-row flex flex-col sm:flex-row  items-center justify-between gap-4 p-1 sm:p-3 hover:bg-base-200">
+              <div className='flex gap-2 sm:gap-8 items-end'>
+                <span className='text-gray-400 text-4xl'>0{chapitre.ordre}</span>
+                <img className='size-15 rounded-xl' src={chapitre.img_url} alt="" />
 
-              <div>
+                <div>
                   <h3 className="font-bold">{chapitre.titre}</h3>
                   <p>{chapitre.description}</p>
                   <p className='text-sm text-gray-400'>{chapitre.date_de_creation}</p>
+                </div>
               </div>
-           
 
-               
-              </div>
-              <div>
-                <button className='btn btn-sm mr-4'
-                onClick={() => {
+              <div className="flex gap-2">
+                {/* Voir contenu */}
+                <button
+                  className='btn btn-sm'
+                  onClick={() => {
                     setSelectedContenu(chapitre.contenu);
                     setShowContenu(true);
                   }}
                 >
-                <Eye className="w-4 h-4"></Eye>
-                
-              </button>
+                  <Eye className="w-4 h-4" />
+                </button>
+
+                {/* Gérer vidéos */}
                 <button
-                className="btn btn-sm "
-                onClick={() => deleteChapitre(chapitre.id, selectedCours.id)}
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-              
+                  className="btn btn-sm"
+                  onClick={() => handleOpenVideos(chapitre)}
+                >
+                  <Video className="w-4 h-4" />
+                </button>
+
+                {/* Supprimer chapitre */}
+                <button
+                  className="btn btn-sm"
+                  onClick={() => deleteChapitre(chapitre.id, selectedCours.id)}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
               </div>
-              
             </div>
           ))}
         </div>
@@ -108,12 +136,23 @@ const ChapitresCours = () => {
           onSubmit={handleAddChapitre}
         />
       )}
+
       {showContenu && (
-              <ContenuChModal 
-                contenu={SelectedContenu}
-                onClose={() => setShowContenu(false)}
-              />
-            )}
+        <ContenuChModal
+          contenu={SelectedContenu}
+          onClose={() => setShowContenu(false)}
+        />
+      )}
+
+      {/* Modal de gestion vidéos */}
+      {showVideoModal && (
+        <VideoUploadModal
+          chapitre={selectedChapitre}
+          videos={videosChapitre}
+          onClose={() => setShowVideoModal(false)}
+          onDelete={deleteVideo}
+        />
+      )}
     </div>
   );
 };

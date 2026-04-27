@@ -93,7 +93,7 @@ exports.getProgressionGlobale = async (req, res) => {
   }
 };
 
-// ✅ Voir le statut de chaque chapitre dans un cours
+//  Voir le statut de chaque chapitre dans un cours
 exports.getChapitresAvecStatut = async (req, res) => {
   const etudiant_id = req.user.id;
   const cours_id = req.params.cours_id;

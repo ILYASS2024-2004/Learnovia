@@ -1,5 +1,5 @@
 
-// 📁 controllers/chapitreController.js
+//  controllers/chapitreController.js
 const pool = require('../config/db');
 
 exports.createChapitre = async (req, res) => {

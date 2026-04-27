@@ -41,7 +41,7 @@ const AdminForm = ({ admin, onClose }) => {
 
   return (
     <div className={`fixed inset-0 ${theme=="light"?" bg-black/20":"bg-white/20"} bg-black/20 bg-opacity-40 z-50 flex items-center justify-center`}>
-      <div className="bg-base-100 p-6 rounded-xl shadow-xl w-full max-w-xl">
+      <div className="bg-base-100 p-2 sm:p-6 rounded-xl shadow-xl w-full max-w-xl">
         <div className="flex justify-between items-center mb-4">
           <div></div>
           <h2 className="text-3xl audiowide-regular-b">
@@ -137,10 +137,10 @@ const AdminForm = ({ admin, onClose }) => {
           )}
 
           <div className="flex justify-between gap-2 mt-4">
-            <button type="button" className="btn btn-error text-white" onClick={onClose}>
+            <button type="button" className="btn btn-sm sm:btn-md  btn-error text-white" onClick={onClose}>
              Annuler l’action <X></X>
             </button>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-sm sm:btn-md  btn-primary">
              {isEdit ? (
   <>
     Modifier l’étudiant <Crown />

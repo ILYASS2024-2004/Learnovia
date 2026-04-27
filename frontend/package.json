@@ -17,6 +17,7 @@
     "axios": "^1.10.0",
     "cally": "^0.8.0",
     "gsap": "^3.13.0",
+    "gsap-trial": "^3.12.7",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.516.0",
     "react": "^19.1.0",

@@ -36,7 +36,7 @@ const Statistiques = () => {
 ];
   return (
     <div>
-      <h1 className='audiowide-regular-b  text-4xl ml-2'>Statistiques</h1>
+      <h1 className='audiowide-regular-b  text-xl sm:text-4xl ml-2'>Statistiques</h1>
       <p className='text-gray-400 mb-4 pl-1'>Vue d’ensemble des données par rôle : professeurs, étudiants, administrateurs</p>
   
       {stats && (
@@ -91,7 +91,7 @@ const Statistiques = () => {
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
   {/* BarChart Étudiants par cours */}
-  <div className="b rounded shadow p-4">
+  <div className="b rounded shadow p-1 sm:p-4">
     <h2 className="text-lg font-semibold text-gray-700 mb-2">Étudiants par cours</h2>
     <div className="w-full h-96">
       <ResponsiveContainer width="100%" height="100%">

@@ -1,7 +1,7 @@
-// 📁 controllers/reponseController.js
+//  controllers/reponseController.js
 const pool = require('../config/db');
 
-// ✅ L'étudiant soumet plusieurs réponses pour un chapitre
+//  L'étudiant soumet plusieurs réponses pour un chapitre
 exports.soumettreReponsesChapitre = async (req, res) => {
   const reponses = req.body;
   const chapitre_id = req.params.chapitre_id;
@@ -9,7 +9,7 @@ exports.soumettreReponsesChapitre = async (req, res) => {
 
   try {
     const [questions] = await pool.execute(
-      `SELECT id, bonne_reponse FROM questions WHERE chapitre_id = ?`,
+      `SELECT id, texte_question, option_a, option_b, option_c, option_d, bonne_reponse  FROM questions WHERE chapitre_id = ?`,
       [chapitre_id]
     );
 
@@ -33,10 +33,15 @@ exports.soumettreReponsesChapitre = async (req, res) => {
         [rep.question_id, etudiant_id, rep.reponse_donnee, est_correct, rep.reponse_donnee, est_correct]
       );
 
+        // On retrouve le texte réel grâce à la lettre choisie
+       const reponseTexte = question[`option_${reponseEtudiant}`];
+       const bonneTexte = question[`option_${bonneReponse}`];
       feedback.push({
         question_id: rep.question_id,
         reponse_donnee: rep.reponse_donnee,
+         reponse_texte: reponseTexte, 
         bonne_reponse: question.bonne_reponse,
+        bonne_reponse_texte: bonneTexte,  
         est_correct
       });
     }

@@ -19,3 +19,21 @@ exports.getEnseignantsDesCoursInscrits = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur." });
   }
 };
+exports.getCoursByEtudiant = async (req, res) => {
+  const etudiant_id = req.params.id;
+
+  try {
+    const [rows] = await db.execute(`
+      SELECT c.id, c.titre, c.description, c.img_url, ens.nom AS enseignant, ens.email AS email_enseignant
+      FROM cours c
+      JOIN enseignants ens ON c.enseignant_id = ens.id
+      JOIN inscriptions i ON i.cours_id = c.id
+      WHERE i.etudiant_id = ? AND i.statut_paiement = 'payé'
+    `, [etudiant_id]);
+
+    res.json(rows);
+  } catch (err) {
+    console.error("Erreur récupération cours étudiant :", err);
+    res.status(500).json({ message: "Erreur serveur", error: err.message });
+  }
+};

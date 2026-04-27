@@ -10,8 +10,10 @@ const useAdminStore = create((set) => ({
     enseignants: [],
     admins: [],
   },
+    coursEtudiant: [], // 🔹 cours d’un étudiant sélectionné
+  isLoadingCoursEtudiant: false,
 
-  // 📊 Statistiques
+  // Statistiques
   fetchStats: async () => {
     set({ isLoading: true });
     try {
@@ -24,7 +26,7 @@ const useAdminStore = create((set) => ({
     }
   },
 
-  // 👥 Utilisateurs - Récupération
+  //  Utilisateurs - Récupération
   fetchUsers: async (role) => {
     try {
       const res = await axiosInstance.get(`/users/${role}s`);
@@ -38,7 +40,7 @@ const useAdminStore = create((set) => ({
     }
   },
 
-  // ➕ Ajouter utilisateur
+  //  Ajouter utilisateur
   addUser: async (role, data) => {
     try {
       const res = await axiosInstance.post(`/users/${role}s`, data);
@@ -52,7 +54,7 @@ const useAdminStore = create((set) => ({
     }
   },
 
-  // ✏️ Modifier utilisateur
+  //  Modifier utilisateur
   updateUser: async (role, id, data) => {
     try {
       await axiosInstance.put(`/users/${role}s/${id}`, data);
@@ -64,7 +66,7 @@ const useAdminStore = create((set) => ({
     }
   },
 
-  // ❌ Supprimer utilisateur
+  //  Supprimer utilisateur
   deleteUser: async (role, id) => {
     try {
       await axiosInstance.delete(`/users/${role}s/${id}`);
@@ -75,6 +77,24 @@ const useAdminStore = create((set) => ({
       toast.error(err.response?.data?.message || `Erreur suppression ${role}`);
     }
   },
+
+    // 📚 Récupérer les cours d’un étudiant
+  fetchCoursByEtudiant: async (etudiantId) => {
+    set({ isLoadingCoursEtudiant: true });
+    try {
+      const res = await axiosInstance.get(`/etudiants/${etudiantId}/cours`);
+      set({ coursEtudiant: res.data });
+      return res.data;
+    } catch (err) {
+      console.error("Erreur récupération cours étudiant :", err);
+      toast.error("Erreur chargement cours étudiant");
+      return [];
+    } finally {
+      set({ isLoadingCoursEtudiant: false });
+    }
+  },
+
+
 
 }));
 

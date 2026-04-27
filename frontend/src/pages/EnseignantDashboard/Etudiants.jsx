@@ -33,8 +33,8 @@ const Etudiants = () => {
   }
 
   return (
-    <div className="p-6">
-      <h1 className="text-4xl audiowide-regular-b">Etudiants inscrits</h1>
+    <div className="p-2 sm:p-6">
+      <h1 className="text-xl sm:text-4xl audiowide-regular-b">Etudiants inscrits</h1>
       <p className="text-sm text-gray-400 mb-8 ">
         Liste des étudiants inscrits à vos cours <span className="text-green-500">(paiement confirmé {etudiantsInscrits.length})</span>.
       </p>
@@ -105,8 +105,8 @@ const Etudiants = () => {
 
       {/* Modal */}
     {showModal && selectedEtudiant && (
-  <div className={`fixed inset-0 ${theme === "light" ? "bg-black/20" : "bg-white/20"} z-50 flex items-center justify-center`}>
-    <div className="bg-base-100 rounded-box shadow-xl p-6 w-[400px]">
+  <div className={`fixed inset-0 ${theme === "light" ? "bg-black/20" : "bg-white/20"}  z-50 flex items-center justify-center`}>
+    <div className="bg-base-100 rounded-box shadow-xl p-6 w-[400px] h-[350px] overflow-y-auto">
   
       <div className="flex justify-between items-center mb-4">
           

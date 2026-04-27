@@ -32,11 +32,11 @@ const NotificationModal = ({ onClose }) => {
 
   return (
     <div className={`fixed inset-0 ${theme=="light"?" bg-black/20":"bg-white/20"} bg-black/20 bg-opacity-40 z-50 flex items-center justify-center`}>
-      <div className="bg-base-100 p-6 rounded-xl shadow-lg w-full max-w-md">
+      <div className="bg-base-100 p-2 sm:p-6 rounded-xl shadow-lg w-full max-w-md">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
             <div></div>
-          <h2 className="text-2xl audiowide-regular-b ">
+          <h2 className="text-xl sm:text-2xl audiowide-regular-b ">
            
             Envoyer une notification
           </h2>
@@ -54,7 +54,7 @@ const NotificationModal = ({ onClose }) => {
               <input
                 type="text"
                 name="titre"
-                placeholder="Ex. : Résultats d'examen disponibles"
+                placeholder="Ex. : test..."
                 className="input input-bordered w-full pl-10"
                 value={formData.titre}
                 onChange={(e) => setFormData({ ...formData, titre: e.target.value })}
@@ -103,12 +103,12 @@ const NotificationModal = ({ onClose }) => {
           </div>
 
           {/* Actions */}
-          <div className="flex justify-between gap-2 mt-4">
-            <button type="button" onClick={onClose} className="btn btn-error text-white">
+          <div className="flex justify-between gap-2 mt-4 ">
+            <button type="button" onClick={onClose} className="btn btn-sm sm:btn-md  btn-error text-white">
              Annuler l’action <X size={18}></X>
             </button>
-            <button type="submit" className="btn btn-primary">
-               <span className="flex items-center gap-2">
+            <button type="submit" className="btn btn-sm sm:btn-md  btn-primary">
+               <span className="flex items-center gap-2 ">
       Envoyer, maintenat <Send size={18} />
     </span>
             </button>

@@ -8,7 +8,7 @@ import Questions from './Questions';
 import ChapitresCours from './ChapitresCours';
 import { useEffect, useState } from 'react';
 import useEnseignantStore from '../../store/useEnseignantStore';
-import NotesExamens from './NotesExamens';
+
 import { useThemeStore } from '../../store/useThemeStore';
 import { Bell } from 'lucide-react';
 import Notif from '../../components/EnseignantDashComponents/Notif';
@@ -21,7 +21,7 @@ const pageTitles = {
   'chapitres': 'Chapitres',
   'etudiants': 'Étudiants',
   'questions': 'Questions',
-  'exams':'Notes'
+ 
 };
 
 
@@ -76,7 +76,7 @@ const [showNotifModal, setShowNotifModal] = useState(false);
 </div>
 {showNotifModal && (
   <Notif onClose={() => setShowNotifModal(false)} />
-    )}
+)}
 
        <Routes>
   <Route path="" element={<Etudiants />} />
@@ -87,7 +87,7 @@ const [showNotifModal, setShowNotifModal] = useState(false);
   
 
   <Route path="questions" element={<Questions />} />
-   <Route path="exams" element={<NotesExamens />} />
+ 
 </Routes>
 
       </div>
